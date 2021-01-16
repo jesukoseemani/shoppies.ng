@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Shoppies- Movie awards for entrepreneurs</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="container">
+    <h1 class="hero">THE SHOPPIES</h1>
+  </header>
+
+  <section class="first-section container">
+    <div class="first-section-div">
+      <h3 class="first-section-heading">
+        Search For Your Favorite Movie For Nomination
+      </h3>
+      <p>Enter a movie title of your choice</p>
+      <div class="first-section-input">
+        <input type="text" id="text" placeholder="Enter your movie name">
+        <ion-icon class="search" name="search-outline"></ion-icon>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+    <div class="nomination">
+      <h1>HERE, your nomination list</h1>
+      <p class="list">You can only nominate five of your favorite movie and you can remove a movie perhaps you change your mind.</p>
+      <div id="loading">
+        <img src="loading.gif" alt="">
+      </div>
+      <ul class="nomination-list">
+      <!-- here is the list of nominated movie -->
+  
+      </ul>
+    </div>
+  <div class="profile ">
+  <!-- here is where the movie information are appended -->
+ 
+  </div> 
+  
+  <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title" id="exampleModalLongTitle">CONGRATULATIONS!!</h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        You have successfully nominate five(5) of your favorite movie for the awards. Thanks for participating.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="fu container">
+  <p>Movie awards for entrepreneurs &copy;2021</p>
+</footer>
+  
+
+
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/ionicons@5.0.0/dist/ionicons.js"></script>
+  <script src="movie.js"></script>
+  <script src="ui.js"></script>
+  <script src="app.js"></script>
+
+
+</body>
+</html>
