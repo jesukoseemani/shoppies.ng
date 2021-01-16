@@ -1,7 +1,10 @@
+
+
 class UI{
   constructor(){
     this.profile = document.querySelector('.profile');
     this.uL = document.querySelector('.nomination-list');
+    
   }
 
   showAlert(message,className){
@@ -35,6 +38,7 @@ class UI{
   }
 
   showSearch(data){
+    
     data.Search.forEach(movie => {
       const galleryImg = document.createElement("div");
       galleryImg.classList.add("gallery-img");
@@ -43,9 +47,9 @@ class UI{
               <img src=${movie.Poster}></img>
               </div>
               <div class="gallery-info">
-              <p><span class="title">TITLE:</span>&nbsp&nbsp${movie.Title}</p>
-              <p><span class="type">TYPE:</span>&nbsp&nbsp${movie.Type}</p>
-              <p><span class="year">YEAR:</span>&nbsp&nbsp${movie.Year}</p>
+              <p><span id="title" class="movie-info">TITLE:</span>&nbsp&nbsp${movie.Title}</p>
+              <p><span id="type" class="movie-info">TYPE:</span>&nbsp&nbsp${movie.Type}</p>
+              <p><span id="year" class="movie-info">YEAR:</span>&nbsp&nbsp${movie.Year}</p>
               <button type="button" id="${movie.imdbID}" class="nomination-button">NOMINATE</button>
               </div>
               

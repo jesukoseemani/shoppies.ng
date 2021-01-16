@@ -1,6 +1,7 @@
 const omdbApi = new Omdbapi;
 const ui = new UI;
 
+
 let count = 0;
 let ID ;
 const profile = document.querySelector('.profile');
@@ -52,7 +53,7 @@ uL.appendChild(li);
 
 
 document.getElementById('text').addEventListener('keyup', (e) => {
- 
+  
   const textInput = e.target.value;
 
  if(textInput !== ''){
@@ -212,3 +213,4 @@ function removeListFromLocalStorage(item) {
 
   localStorage.setItem('lists', JSON.stringify(lists));
 }
+

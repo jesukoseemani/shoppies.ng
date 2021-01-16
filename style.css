@@ -97,20 +97,22 @@ input {
   margin: 0 auto;
 } */
 
-.title {
+.movie-info {
   font-size: 2rem;
+  font-style: italic;
+  margin-left: 2rem;
+}
+
+#title {
   color: #821752;
-  font-style: italic;
 }
-.year {
-  font-size: 2rem;
+
+#year {
   color: #de4463;
-  font-style: italic;
 }
-.type {
-  font-size: 2rem;
+
+#type {
   color: #edc988;
-  font-style: italic;
 }
 
 /* .gallery-img{
