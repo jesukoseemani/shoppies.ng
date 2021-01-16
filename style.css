@@ -1,3 +1,5 @@
+/* GENERAL STYLING */
+
 *,
 *::before,
 *::after {
@@ -31,6 +33,7 @@ h4 {
   margin: 0 auto;
 }
 
+/* HEADER SECTION */
 header {
   background-color: #f4f4f4;
   padding: 2.5rem 0;
