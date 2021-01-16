@@ -73,6 +73,8 @@ document.getElementById('text').addEventListener('keyup', (e) => {
     console.log(err)
   })
 
+ }else{
+   ui.clearProfile()
  }
 
  });
@@ -213,4 +215,5 @@ function removeListFromLocalStorage(item) {
 
   localStorage.setItem('lists', JSON.stringify(lists));
 }
+
 
