@@ -97,4 +97,8 @@ this.uL.appendChild(li);
   this.profile.innerHTML = '';
   this.input.value = '';
  }
+
+ clearInput(){
+   this.input.disabled = true
+ }
 }

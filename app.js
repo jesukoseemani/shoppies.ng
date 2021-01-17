@@ -2,7 +2,7 @@ const omdbApi = new Omdbapi;
 const ui = new UI;
 
 
-let count = 0;
+let count = 1;
 let ID ;
 const profile = document.querySelector('.profile');
 const uL = document.querySelector('.nomination-list');
@@ -67,7 +67,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
      
    }else{
     ui.showSearch(data);
-
+    document.getElementById(ID).disabled = true;
    }
   })
   .catch(err =>{
@@ -100,11 +100,12 @@ document.getElementById('text').addEventListener('keyup', (e) => {
     // scroll to top
     window.scrollTo(300, 230);
 
-    if(count <= 3 ){
+    if(count <= 4 ){
       count++
     }else{
       $('.modal').modal('show');
-      ui.clearProfile()
+      ui.clearProfile();
+      ui.clearInput();
     
     }
 
@@ -112,7 +113,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
       
       omdbApi.searchidApi(ID)
       .then(data => {
-        console.log(data)
+        
        if(data.Response === "False"){
          ui.showAlert('This movie is not available','alert');
          
@@ -178,7 +179,10 @@ document.getElementById('text').addEventListener('keyup', (e) => {
          }
          e.target.parentElement.parentElement.remove();
          count--
-       console.log(count)
+        //  if(count >= -1 ){
+        //    --count
+        //  }
+        console.log(count)
     })
     .catch(err =>{
       console.log(err)
