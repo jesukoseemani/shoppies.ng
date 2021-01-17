@@ -118,7 +118,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
          
        }else{
         ui.showNominationList(data);
-        
+        storeListInLocalStorage(data);
     
        }
       })
@@ -177,8 +177,8 @@ document.getElementById('text').addEventListener('keyup', (e) => {
           document.getElementById(listID).disabled = false;
          }
          e.target.parentElement.parentElement.remove();
-        
-      
+         count--
+       console.log(count)
     })
     .catch(err =>{
       console.log(err)
@@ -210,6 +210,7 @@ function removeListFromLocalStorage(item) {
   lists.forEach(function(list, index){
     if(item == list.imdbID){
       lists.splice(index, 1);
+
     }
 
   });

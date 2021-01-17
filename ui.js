@@ -4,6 +4,8 @@ class UI{
   constructor(){
     this.profile = document.querySelector('.profile');
     this.uL = document.querySelector('.nomination-list');
+    this.defaultImg = "https://res.cloudinary.com/sajicode/image/upload/v1610909420/photo_not_found.jpg";
+    this.input = document.querySelector("#text");
     
   }
 
@@ -44,7 +46,7 @@ class UI{
       galleryImg.classList.add("gallery-img");
       galleryImg.innerHTML = `
               <div class="image">
-              <img src=${movie.Poster}></img>
+              <img src=${movie.Poster !== "N/A" ? movie.Poster : this.defaultImg}></img>
               </div>
               <div class="gallery-info">
               <p><span id="title" class="movie-info">TITLE:</span>&nbsp&nbsp${movie.Title}</p>
@@ -82,7 +84,7 @@ li.appendChild(link);
 // Append li to ul
 this.uL.appendChild(li);
 
-storeListInLocalStorage(data);
+
  }
 
  removeMovie(item){
@@ -93,6 +95,6 @@ storeListInLocalStorage(data);
 
  clearProfile(){
   this.profile.innerHTML = '';
-
+  this.input.value = '';
  }
 }
