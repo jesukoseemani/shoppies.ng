@@ -53,12 +53,12 @@ num++
 
 })
 
-count = num ;
-if(count >= 5){
-  ui.clearInput();
-}else{
-  ui.openInput()
-}
+// count = num - 2;
+// if(count >= 5){
+//   ui.clearInput();
+// }else{
+//   ui.openInput()
+// }
 
 
 }
@@ -131,7 +131,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
         
         if(count <= 5 ){
           count++
-          ui.openInput();
+          // ui.openInput();
         
         }else{
           $('.modal').modal('show');
