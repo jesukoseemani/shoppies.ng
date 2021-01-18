@@ -53,12 +53,12 @@ num++
 
 })
 
-// count = num - 2;
-// if(count >= 5){
-//   ui.clearInput();
-// }else{
-//   ui.openInput()
-// }
+count = num
+if(count = 5){
+  ui.clearInput();
+}else if(count < 5){
+  ui.openInput()
+}
 
 
 }
@@ -129,9 +129,9 @@ document.getElementById('text').addEventListener('keyup', (e) => {
         ui.showNominationList(data);
         storeListInLocalStorage(data);
         
-        if(count <= 5 ){
+        if(count <= 4 ){
           count++
-          // ui.openInput();
+          ui.openInput();
         
         }else{
           $('.modal').modal('show');
@@ -193,7 +193,14 @@ document.getElementById('text').addEventListener('keyup', (e) => {
           document.getElementById(listID).disabled = false;
          }
          e.target.parentElement.parentElement.remove();
-         count--
+         if(count >= 4){
+          count--
+          
+         }else{
+           count = 1
+           ui.openInput()
+         }
+         
        
        
     })
@@ -227,12 +234,13 @@ function removeListFromLocalStorage(item) {
   lists.forEach(function(list, index){
     if(item == list.imdbID){
       lists.splice(index, 1);
-
+      
     }
 
   });
 
   localStorage.setItem('lists', JSON.stringify(lists));
+  
 }
 
 
