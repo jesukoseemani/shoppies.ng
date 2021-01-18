@@ -54,11 +54,7 @@ num++
 })
 
 count = num
-if(count = 5){
-  ui.clearInput();
-}else if(count < 5){
-  ui.openInput()
-}
+
 
 
 }
