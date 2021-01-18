@@ -12,7 +12,8 @@ const button = document.querySelector('.nomination-button');
 //Get list from Local storage
 document.addEventListener('DOMContentLoaded', getLists);
 function getLists(){
-  
+
+
   document.querySelector('.nomination-list').style.display = 'block';
   
   // Show loader
@@ -48,12 +49,11 @@ li.appendChild(link);
 // Append li to ul
 uL.appendChild(li);
 
-num++
 
 
 })
 
-count = num
+
 
 
 
