@@ -1,7 +1,7 @@
 const omdbApi = new Omdbapi;
 const ui = new UI;
 
-
+let num=null;
 let count = 1;
 let ID ;
 const profile = document.querySelector('.profile');
@@ -12,7 +12,7 @@ const button = document.querySelector('.nomination-button');
 //Get list from Local storage
 document.addEventListener('DOMContentLoaded', getLists);
 function getLists(){
- 
+  
   document.querySelector('.nomination-list').style.display = 'block';
   
   // Show loader
@@ -24,7 +24,7 @@ function getLists(){
   } else {
     lists = JSON.parse(localStorage.getItem('lists'));
   }
-
+    
   lists.forEach(List => {
     // Create li element
 const li = document.createElement('li');
@@ -47,7 +47,17 @@ li.appendChild(link);
 
 // Append li to ul
 uL.appendChild(li);
+
+num++
+
+
 })
+
+count = num + 1;
+if(count >= 5){
+  ui.clearInput();
+}
+
 
 }
 
@@ -56,22 +66,25 @@ uL.appendChild(li);
 document.getElementById('text').addEventListener('keyup', (e) => {
   
   const textInput = e.target.value;
-
+  
  if(textInput !== ''){
 
   omdbApi.searchMovieApi(textInput)
   .then(data => {
-    console.log(data)
+    
    if(data.Response === "False"){
      ui.showAlert('This movie is not available','alert');
      
    }else{
     ui.showSearch(data);
-    document.getElementById(ID).disabled = true;
+   
+  
+    
+    
    }
   })
   .catch(err =>{
-    console.log(err)
+   
   })
 
  }else{
@@ -96,18 +109,11 @@ document.getElementById('text').addEventListener('keyup', (e) => {
     // Show loader
     document.querySelector('#loading').style.display = 'block';
  
-    console.log(count)
+   
     // scroll to top
     window.scrollTo(300, 230);
 
-    if(count <= 4 ){
-      count++
-    }else{
-      $('.modal').modal('show');
-      ui.clearProfile();
-      ui.clearInput();
-    
-    }
+   
 
     setTimeout(function(){
       
@@ -120,11 +126,20 @@ document.getElementById('text').addEventListener('keyup', (e) => {
        }else{
         ui.showNominationList(data);
         storeListInLocalStorage(data);
-    
+        
+        if(count <= 4 ){
+          count++
+        
+        }else{
+          $('.modal').modal('show');
+          ui.clearProfile();
+          ui.clearInput();
+        
+        }
        }
       })
       .catch(err =>{
-        console.log(err)
+       
       });
 
      
@@ -154,14 +169,11 @@ document.getElementById('text').addEventListener('keyup', (e) => {
   } else {
     lists = JSON.parse(localStorage.getItem('lists'));
   }
-
+  
   lists.push(list);
-
+  
   localStorage.setItem('lists', JSON.stringify(lists));
 }
-
-
-
 
 
  uL.addEventListener("click", (e) => {
@@ -179,10 +191,8 @@ document.getElementById('text').addEventListener('keyup', (e) => {
          }
          e.target.parentElement.parentElement.remove();
          count--
-        //  if(count >= -1 ){
-        //    --count
-        //  }
-        console.log(count)
+       
+       
     })
     .catch(err =>{
       console.log(err)
@@ -191,7 +201,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
     if(confirm("Are you sure??")){
       removeListFromLocalStorage(listID)
       ui.removeMovie(e.target.parentElement.parentElement)
-
+      
     }
     
     }

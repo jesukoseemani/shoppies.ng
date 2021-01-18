@@ -92,7 +92,6 @@ this.uL.appendChild(li);
  }
 
 
-
  clearProfile(){
   this.profile.innerHTML = '';
   this.input.value = '';
