@@ -53,9 +53,11 @@ num++
 
 })
 
-count = num + 1;
+count = num ;
 if(count >= 5){
   ui.clearInput();
+}else{
+  ui.openInput()
 }
 
 
@@ -127,8 +129,9 @@ document.getElementById('text').addEventListener('keyup', (e) => {
         ui.showNominationList(data);
         storeListInLocalStorage(data);
         
-        if(count <= 4 ){
+        if(count <= 5 ){
           count++
+          ui.openInput();
         
         }else{
           $('.modal').modal('show');

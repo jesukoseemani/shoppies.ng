@@ -100,4 +100,7 @@ this.uL.appendChild(li);
  clearInput(){
    this.input.disabled = true
  }
+ openInput(){
+  this.input.disabled = false
+}
 }
