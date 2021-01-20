@@ -210,6 +210,13 @@ footer {
   border: none;
 }
 
+#disabled {
+  background-color: transparent;
+  pointer-events: none;
+  color: rgb(196, 196, 196);
+  border: none;
+}
+
 .nomination-button:hover {
   background-color: #11694c;
 }

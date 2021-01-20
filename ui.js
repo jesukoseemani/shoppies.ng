@@ -39,9 +39,11 @@ class UI{
     }
   }
 
-  showSearch(data){
+  showSearch(data, lists){
+    
     
     data.Search.forEach(movie => {
+      
       const galleryImg = document.createElement("div");
       galleryImg.classList.add("gallery-img");
       galleryImg.innerHTML = `
@@ -52,12 +54,22 @@ class UI{
               <p><span id="title" class="movie-info">TITLE:</span>&nbsp&nbsp${movie.Title}</p>
               <p><span id="type" class="movie-info">TYPE:</span>&nbsp&nbsp${movie.Type}</p>
               <p><span id="year" class="movie-info">YEAR:</span>&nbsp&nbsp${movie.Year}</p>
-              <button type="button" id="${movie.imdbID}" class="nomination-button">NOMINATE</button>
+              <button type="button" id="${movie.imdbID }" class="nomination-button">NOMINATE</button>
               </div>
               
               `;
       this.profile.appendChild(galleryImg);
+
+      lists.forEach(list => {
+        if(list.imdbID === movie.imdbID){
+          document.getElementById(list.imdbID).disabled = true;
+        }
+       
+      })
+      
     });
+
+
 
   }
 
@@ -84,7 +96,7 @@ li.appendChild(link);
 // Append li to ul
 this.uL.appendChild(li);
 
-
+// document.getElementById(data.imdbID).disabled = true;
  }
 
  removeMovie(item){
@@ -100,8 +112,25 @@ this.uL.appendChild(li);
  clearInput(){
    this.input.disabled = true
  }
- 
+
  openInput(){
   this.input.disabled = false
 }
+
+disableButton(data, listID){
+  if( listID === data.imdbID){
+    document.getElementById(listID).disabled = false;
+     }else{
+      document.getElementById(listID).disabled = true;  
+     }
+}
+
+enableButton(data, ID){
+  if( ID === data.imdbID){
+    document.getElementById(data.imdbID).disabled = true;
+     }else{
+      document.getElementById(data.imdbID).disabled = false;  
+     }
+}
+
 }

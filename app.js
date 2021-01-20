@@ -1,12 +1,13 @@
 const omdbApi = new Omdbapi;
 const ui = new UI;
 
-let num=null;
-let count = 1;
+let num= [];
+let count = null;
 let ID ;
 const profile = document.querySelector('.profile');
 const uL = document.querySelector('.nomination-list');
 const button = document.querySelector('.nomination-button');
+
 
 
 //Get list from Local storage
@@ -49,11 +50,14 @@ li.appendChild(link);
 // Append li to ul
 uL.appendChild(li);
 
-
-
 })
+if(lists.length === 5){
+  ui.clearInput()
+}else{
+  ui.openInput()
+}
 
-
+count = lists.length
 
 
 
@@ -64,6 +68,7 @@ uL.appendChild(li);
 document.getElementById('text').addEventListener('keyup', (e) => {
   
   const textInput = e.target.value;
+  const lists = JSON.parse(localStorage.getItem('lists'))
   
  if(textInput !== ''){
 
@@ -74,15 +79,13 @@ document.getElementById('text').addEventListener('keyup', (e) => {
      ui.showAlert('This movie is not available','alert');
      
    }else{
-    ui.showSearch(data);
-   
-  
-    
+    ui.showSearch(data, lists); 
+
     
    }
   })
   .catch(err =>{
-   
+   console.log(err)
   })
 
  }else{
@@ -124,9 +127,12 @@ document.getElementById('text').addEventListener('keyup', (e) => {
        }else{
         ui.showNominationList(data);
         storeListInLocalStorage(data);
+        ui.enableButton(data, ID);
         
-        if(count <= 4 ){
-          count++
+        
+        if(count <= 3 ){
+          count= count + 1;
+          
           ui.openInput();
         
         }else{
@@ -152,7 +158,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
         
     }, 2000);
   
-    document.getElementById(ID).disabled = true;
+    // document.getElementById(ID).disabled = true;
     
   
     e.preventDefault();
@@ -172,6 +178,8 @@ document.getElementById('text').addEventListener('keyup', (e) => {
   lists.push(list);
   
   localStorage.setItem('lists', JSON.stringify(lists));
+
+  // document.getElementById(list.imdbID).disabled = true;
 }
 
 
@@ -184,18 +192,24 @@ document.getElementById('text').addEventListener('keyup', (e) => {
 
     omdbApi.searchidApi(listID)
     .then(data => {
-      
-        if( listID === data.imdbID){
-          document.getElementById(listID).disabled = false;
-         }
-         e.target.parentElement.parentElement.remove();
-         if(count >= 4){
-          count--
-          
-         }else{
-           count = 1
-           ui.openInput()
-         }
+       
+        
+        if(confirm("Are you sure??")){
+      removeListFromLocalStorage(listID)
+      ui.removeMovie(e.target.parentElement.parentElement)
+     
+    }
+        //  e.target.parentElement.parentElement.remove();
+          count = count - 1
+          if(count <= 5){
+            ui.openInput()
+          }else{
+            ui.clearInput()
+          }
+
+          console.log(count)
+         
+          ui.disableButton(data, listID)    
          
        
        
@@ -204,11 +218,6 @@ document.getElementById('text').addEventListener('keyup', (e) => {
       console.log(err)
     });
 
-    if(confirm("Are you sure??")){
-      removeListFromLocalStorage(listID)
-      ui.removeMovie(e.target.parentElement.parentElement)
-      
-    }
     
     }
  })
@@ -231,12 +240,15 @@ function removeListFromLocalStorage(item) {
     if(item == list.imdbID){
       lists.splice(index, 1);
       
+      
     }
+   
 
   });
-
+  
   localStorage.setItem('lists', JSON.stringify(lists));
   
 }
+
 
 
