@@ -59,13 +59,17 @@ class UI{
               
               `;
       this.profile.appendChild(galleryImg);
-
-      lists.forEach(list => {
-        if(list.imdbID === movie.imdbID){
-          document.getElementById(list.imdbID).disabled = true;
-        }
-       
-      })
+  if(lists){
+    lists.forEach(list => {
+      if(list.imdbID === movie.imdbID){
+        document.getElementById(list.imdbID).disabled = true;
+      }
+     
+    })
+  }else{
+  return lists
+  }
+      
       
     });
 

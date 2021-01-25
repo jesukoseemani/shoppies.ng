@@ -80,7 +80,7 @@ document.getElementById('text').addEventListener('keyup', (e) => {
      
    }else{
     ui.showSearch(data, lists); 
-
+ console.log(data)
     
    }
   })
@@ -129,9 +129,10 @@ document.getElementById('text').addEventListener('keyup', (e) => {
         storeListInLocalStorage(data);
         ui.enableButton(data, ID);
         
+        count= count + 1;
         
-        if(count <= 3 ){
-          count= count + 1;
+        
+        if(count <= 4 ){
           
           ui.openInput();
         
@@ -201,13 +202,13 @@ document.getElementById('text').addEventListener('keyup', (e) => {
     }
         //  e.target.parentElement.parentElement.remove();
           count = count - 1
-          if(count <= 5){
+          if(count < 5){
             ui.openInput()
           }else{
             ui.clearInput()
           }
 
-          console.log(count)
+      
          
           ui.disableButton(data, listID)    
          
