@@ -478,7 +478,7 @@ ion-icon {
 
   .gridbox-back {
     align-content: center;
-    top: 70%;
+    top: 75%;
     left: 0;
     width: 100%;
     box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
@@ -569,5 +569,14 @@ ion-icon {
 
   .search {
     left: 8%;
+  }
+
+  .poster-2 {
+    display: none;
+  }
+
+  .movie-content {
+    margin-left: 0rem;
+    margin-top: 2rem;
   }
 }
