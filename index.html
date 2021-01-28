@@ -4,8 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>The Shoppies- Movie awards for entrepreneurs</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fredericka+the+Great&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
   <link rel="stylesheet" href="style.css">
+  <script src="https://kit.fontawesome.com/bde65c54d1.js" crossorigin="anonymous"></script>
 </head>
 <body>
   <header class="container">
@@ -17,7 +20,7 @@
       <h3 class="first-section-heading">
         Nominate your Favorite Movie
       </h3>
-      <p>Enter a movie title of your choice</p>
+      <p class="list">You can only nominate five of your favorite movie and you can remove a movie perhaps you change your mind.</p>
       <div class="first-section-input">
         <input type="text" id="text" placeholder="Enter your movie name">
         <ion-icon class="search" name="search-outline"></ion-icon>
@@ -27,11 +30,13 @@
 
   <main class="container">
     <div class="nomination">
-      <h1>HERE, your nomination list</h1>
-      <p class="list">You can only nominate five of your favorite movie and you can remove a movie perhaps you change your mind.</p>
+      <div class="button-div">
+        <button type="button" class="btn show-lists">Show Nomination List</button>
+      </div>
       <div id="loading">
         <img src="loading.gif" alt="">
       </div>
+     
       <ul class="nomination-list">
       <!-- here is the list of nominated movie -->
   
@@ -56,7 +61,7 @@
         You have successfully nominate five(5) of your favorite movie for the awards. Thanks for participating.
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn show-lists" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>

@@ -1,12 +1,14 @@
 const omdbApi = new Omdbapi;
 const ui = new UI;
 
-let num= [];
+const starTotal = 10;
 let count = null;
 let ID ;
 const profile = document.querySelector('.profile');
 const uL = document.querySelector('.nomination-list');
 const button = document.querySelector('.nomination-button');
+const defaultImg = "https://res.cloudinary.com/sajicode/image/upload/v1610909420/photo_not_found.jpg";
+const listButton= document.querySelector('.show-lists')
 
 
 
@@ -36,19 +38,38 @@ li.className = 'collection-item';
 li.id = `list-${List.imdbID}`;
 // add html to li
 li.innerHTML = `
-    <p class="list_p"><ion-icon class="circle" name="arrow-redo-circle-outline"></ion-icon>${List.Title}(${List.Year})</p>
+<div class="picture-des">
+<img src=${List.Poster !== "N/A" ? List.Poster : defaultImg} alt="poster"></img>
+</div>
+<div class="description">
+  <h3 class="description-title">${List.Title}(${List.Year})</h3>
+  <p class="description-plot">${List.Plot}</p>
+  <div class="description-rating">
+    <div class="stars-outer">
+      <div class="stars-inner" id="${List.imdbID}"></div>
+    </div>
+    <span class="number-rating">${List.imdbRating}</span>
+  </div>
+</div>
 `
 // Create new link element
 const link = document.createElement('a');
 // Add class
 link.className = 'delete-item secondary-content';
 // Add icon html
-link.innerHTML = '<ion-icon class="trash" name="trash-outline"></ion-icon>';
+link.innerHTML = '<ion-icon class="trash" name="trash-outline" title="delete"></ion-icon>';
 // Append the link to li
 li.appendChild(link);
 
 // Append li to ul
 uL.appendChild(li);
+const starPercentage = (List.imdbRating / starTotal) * 100;
+         
+// Round to nearest 10
+const starPercentageRounded = `${Math.round(starPercentage / 10) * 10}%`;
+
+const star = document.querySelector(`#${List.imdbID}`)
+star.style.width= starPercentageRounded;
 
 })
 if(lists.length === 5){
@@ -58,7 +79,7 @@ if(lists.length === 5){
 }
 
 count = lists.length
-
+// ui.showStar(data);
 
 
 }
@@ -125,8 +146,8 @@ document.getElementById('text').addEventListener('keyup', (e) => {
          ui.showAlert('This movie is not available','alert');
          
        }else{
-        ui.showNominationList(data);
-        storeListInLocalStorage(data);
+        ui.showNominationList(data, starTotal);
+        storeListInLocalStorage(data);    
         ui.enableButton(data, ID);
         
         count= count + 1;
@@ -252,4 +273,19 @@ function removeListFromLocalStorage(item) {
 }
 
 
+listButton.addEventListener('click', (e) => {
+const showNom = document.querySelectorAll('.collection-item');
+showNom.forEach(Nom => {
+  if(Nom.style.display === "flex"){
+    Nom.style.display = "none"
+  }else{
+    Nom.style.display = "flex"
+  }
 
+})
+
+
+
+
+e.preventDefault();
+})
