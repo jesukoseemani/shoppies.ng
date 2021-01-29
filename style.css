@@ -40,6 +40,10 @@ h4 {
   margin: 0 auto;
 }
 
+.modal {
+  z-index: 4000;
+}
+
 /* HEADER SECTION */
 header {
   background-color: #fffafa;
@@ -79,7 +83,7 @@ header {
   width: 100%;
   margin-left: 3rem;
   position: relative;
-  z-index: 2000;
+  z-index: 20;
 }
 
 .first-section-heading {
